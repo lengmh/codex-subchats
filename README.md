@@ -125,7 +125,7 @@ python .\subchats.py --state $subchatsState resolve-stopped 'RUN_UUID' --confirm
 
 - 并发保护仅覆盖同一 state 目录下本工具登记的任务，拒绝同一会话和相互包含的 cwd。不会锁住用户编辑器或原主代理；需约定写入归属。
 - 使用本地文件系统存放 state；默认位于用户个人目录。日志含任务内容和模型输出，不要提交到仓库或放在共享目录。原型不配置 Windows ACL。
-- 原生 Windows 启动、取消和 IDE MCP 尚待本机验证。提供 CI 矩阵，但没有创建仓库或运行远程 CI。
+- 用户原生 Windows 环境和 IDE MCP 尚待本机验证。公开源码已发布；提交 [`025cd31b`](https://github.com/lengmh/codex-subchats/commit/025cd31b11c878e992cda43a0b8b18e5b889a93c) 的 [Windows/Linux CI](https://github.com/lengmh/codex-subchats/actions/runs/39434388406) 已通过 Python 3.11/3.13 四项矩阵，覆盖替身传输测试、wheel 构建和安装入口。CI 不证明真实模型或 VS Code 自动唤醒可用，外部自动代码审查尚未确认完成。
 - Linux/Remote-SSH 原则上在拥有原 IDE 会话的同一远端运行 worker/MCP/queue。跨本机—远端转发不在本轮范围内。
 - 不修改 Codex 数据库、不抢占原主会话 writer、不在 queue 失败后偷偷改用 `exec resume` 唤醒主线程。
 - 模型字段是请求配置，不能证明自定义网关实际路由到哪个模型。按用户 provider 的响应和后台记录复核。
