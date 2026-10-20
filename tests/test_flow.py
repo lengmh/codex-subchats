@@ -27,7 +27,17 @@ class FlowTests(unittest.TestCase):
     def tearDown(self):
         for process in self.store.workers:
             process.wait(timeout=5)
-        self.tmp.cleanup()
+        # MCP-launched workers are not children of this test process. Their
+        # terminal notification can be visible just before worker.log closes.
+        deadline = time.monotonic() + 5
+        while True:
+            try:
+                self.tmp.cleanup()
+                break
+            except PermissionError as exc:
+                if os.name != 'nt' or exc.winerror != 32 or time.monotonic() >= deadline:
+                    raise
+                time.sleep(0.02)
     def await_run(self, run_id, notification=False):
         deadline = time.monotonic() + 10
         while time.monotonic() < deadline:
