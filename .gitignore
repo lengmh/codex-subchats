@@ -6,3 +6,8 @@ dist/
 .subchats/
 *.sqlite*
 test-results.txt
+
+# Private working journals; public design and test documentation stays tracked.
+/task_plan.md
+/progress.md
+/findings.md

@@ -1,32 +1,17 @@
-# 公开仓库发布配置
+# 公开源码维护与验证
 
-目标：`lengmh/codex-subchats`，公开源码，当前保持 `0.1.0a1` 实验阶段，不创建正式 Release。
+`codex-subchats` 的公开版本为 `0.1.0a1` 实验原型。公开源码、CI 通过与正式 Release、PyPI 发布、真实 IDE 验收是不同状态。
 
-配置参考：2026-10-20 读取的 `lengmh/v2rayN-Monitor` 实际设置。
+## 提交与检查
 
-| 设置 | 拟应用值 |
-| --- | --- |
-| 默认分支 | main |
-| 可见性 | public |
-| 许可证 | MIT |
-| 描述 | Local-first independent Codex CLI sessions, durable task state and queue notifications for VS Code orchestration. Experimental. |
-| Issues / Projects / Wiki | 开启，与参考仓库一致 |
-| Discussions | 关闭 |
-| Merge commit / Squash / Rebase | 允许 |
-| Auto merge / 自动删除分支 | 关闭 |
-| main-basic-protection | main 禁止删除、禁止非快进更新，无 bypass |
+- 使用独立分支和 PR 提交可复核的变更，按改动风险执行必要验证。
+- CI 使用只读 `contents` 权限，在 Windows/Linux 的 Python 3.11/3.13 上执行替身传输测试、wheel 构建和安装入口检查，不调用模型。
+- 提交后核对精确 head 的 CI；排队或运行中不算通过。历史 a1 验证与未验证范围见 [测试报告](test-results.md)。
+- 自动代码审查依赖已有 GitHub 集成，必须单独核对是否完成，不能以审查请求、本地复核或 CI 通过代替。
+- 仓库设置以实际远端状态为准，文档中的流程不表示设置已应用。
 
-源码包含适配本项目的 AGENTS.md、SECURITY.md、Bug/PR 模板及 Windows/Linux CI。CI 使用只读 contents 权限，Python 3.11/3.13，包含传输测试、wheel 构建和安装入口检查，不调用模型。
+## 公开内容边界
 
-## 执行顺序
+只保留必要设计结论、可复现验证方法和验收限制。私人开发计划、授权对话、逐次操作流水和真实 state 留在仓库外；不得把真实数据改称合成数据后提交。
 
-1. 创建公开仓库并准备 main 基础提交。
-2. 提交实验原型源码，执行对应提交的 CI。
-3. 核对精确提交的检查结果，修复确认存在的问题；可用的自动代码审查单独核验。
-4. 核对仓库最终状态及上述基础 main 规则。
-
-自动代码审查依赖账户已有 Codex/GitHub 审查集成；不能把发布一条审查请求当作审查已完成。不新增付费密钥或第三方服务。若集成没有覆盖新仓库，明确报告实际阻碍。
-
-## 当前执行状态
-
-2026-10-20：已创建公开仓库 [lengmh/codex-subchats](https://github.com/lengmh/codex-subchats)，默认分支为 main。源码上传前在 Linux / Python 3.12.14 重跑 15 项测试，全部通过；源码语法及命令入口检查通过。远程 CI 结果以对应提交的 GitHub Actions 为准，自动代码审查尚未确认完成。上表是目标配置，不代表所有设置均已应用。仍未验证原 Windows VS Code 自动唤醒，不创建正式 Release，也不发布 PyPI 包。
+本机验收步骤见 [Windows VS Code 本机验收](local-acceptance.md)。模板仍待执行；公开源码和替身测试不能证明原线程自动唤醒或三轮真实闭环已通过。
