@@ -26,7 +26,7 @@
 - [App Server extensions](https://github.com/openai/codex/blob/e18a20d6eb6f5ede32a69fb56e3fe276d5e9d914/codex-rs/app-server/src/extensions.rs)：在提供 queue_service 时安装队列扩展。
 - [exec CLI](https://github.com/openai/codex/blob/e18a20d6eb6f5ede32a69fb56e3fe276d5e9d914/codex-rs/exec/src/cli.rs)：JSONL、stdin prompt、输出文件、恢复入口。
 
-上述事实支持「条件成立时可行」，不足以支持「当前 Windows IDE 已可用」。公开源码树没有包含本轮所需的 VS Code 扩展前端生命周期实现；本环境也没有扩展二进制或用户运行日志。结束回合、切换聊天、关闭面板、窗口重载是否卸载线程，必须分别实测。
+上述事实支持「条件成立时可行」，不足以支持「当前 Windows IDE 已可用」。公开源码树没有包含本次核对所需的 VS Code 扩展前端生命周期实现，也没有对应的真实 IDE 验收证据。结束回合、切换聊天、关闭面板、窗口重载是否卸载线程，必须分别实测。
 
 ## 参考项目审查
 
