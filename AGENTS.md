@@ -1,6 +1,6 @@
 # 开发约定
 
-先读 README.md、task_plan.md 和 docs/feasibility.md；进展记录在 progress.md。
+先读 README.md、docs/feasibility.md 和 docs/architecture.md；测试结论与待验收范围见 docs/test-results.md。
 
 ## 主线与边界
 
@@ -17,5 +17,7 @@
 ## 公开内容
 
 仅提交原创源码、文档和合成 fixtures。不要提交真实 state 目录、数据库、认证文件、聊天记录、运行日志或用户目录。不要复制其他仓库的历史授权或项目状态。
+
+私人任务计划、授权记录和逐次操作流水留在仓库外；公开文档仅保留必要设计结论、可复现验证方法和未验证边界。真实测试证据不得改称合成数据，验收模板填写后不得连同个人环境信息提交。
 
 汇报应说明改动、实际验证、已知限制及下一步。公开源码不等于正式 Release，也不等于 P0/P2 已验收。

@@ -4,7 +4,7 @@
 
 **当前版本：0.1.0a1，实验验证原型。P0 尚缺用户 Windows VS Code 实测；不是已验收发布版。**
 
-已实现独立会话、指定子模型、准确 Thread ID 恢复、持久化状态、完成事件入队、取消、冲突保护和 MCP。`queued` 仅表示 Codex 队列接受消息，不代表原 Astra 已执行。当前环境没有真实 Codex CLI 和用户 IDE；测试使用替身进程。
+已实现独立会话、指定子模型、准确 Thread ID 恢复、持久化状态、完成事件入队、取消、冲突保护和 MCP。`queued` 仅表示 Codex 队列接受消息，不代表原 Astra 已执行。现有自动化测试使用 Codex 替身进程，尚无真实 Windows VS Code 自动唤醒验收结论。
 
 ## 从这里开始
 
@@ -139,4 +139,4 @@ python -m unittest discover -s tests -v
 
 Linux：`PYTHONPATH=src python3 -m unittest discover -s tests -v`。
 
-结果与覆盖边界见 [测试报告](docs/test-results.md)，实现关系见 [架构说明](docs/architecture.md)。
+结果与覆盖边界见 [测试报告](docs/test-results.md)，实现关系与后续验收门禁见 [架构说明](docs/architecture.md)。
